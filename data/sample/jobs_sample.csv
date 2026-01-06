@@ -1,0 +1,21 @@
+job_id,company,location,category,subcategory,role,employment_type,salary_raw,salary_type,salary_min,salary_max,salary_period,currency,listing_date,source
+0,Coca-Cola Bottlers (Malaysia) Sdn Bhd,Negeri Sembilan,"Manufacturing, Transport & Logistics","Purchasing, Procurement & Inventory",procurement-executive,Contract/Temp,,,,,,,2024-03-21T05:58:35Z,kaggle_jobstreet
+1,Acoustic & Lighting System Sdn Bhd,Petaling,Accounting,Bookkeeping & Small Practice Accounting,executive-assistant,Full time,"RM 2,800 – RM 3,200 per month",,,,,,2024-03-22T06:52:57Z,kaggle_jobstreet
+2,Shopee Mobile Malaysia Sdn Bhd,Klang District,"Manufacturing, Transport & Logistics",Analysis & Reporting,asset-management-analyst,Full time,,,,,,,2024-03-22T04:22:43Z,kaggle_jobstreet
+3,Sun Medical Systems Sdn Bhd,Petaling,Engineering,Electrical/Electronic Engineering,services-engineer,Full time,"RM 3,000 – RM 3,500 per month",,,,,,2024-03-22T05:32:09Z,kaggle_jobstreet
+5,HPMT Industries Sdn Bhd,Shah Alam/Subang,Accounting,Financial Accounting & Reporting,accounts-executive,Full time,,,,,,,2024-03-22T07:12:37Z,kaggle_jobstreet
+8,KLK OLEO,Selangor,Accounting,Accounts Payable,accounts-assistant,Full time,,,,,,,2024-03-22T08:30:54Z,kaggle_jobstreet
+10,AGENSI PEKERJAAN JS STAFFING SERVICES SDN BHD,Bangsar South,Administration & Office Support,Administrative Assistants,clerical-assistant,Full time,"RM 3,000 – RM 3,200 per month",,,,,,2024-03-23T01:36:35Z,kaggle_jobstreet
+12,OTC Cosmetic Industries Sdn Bhd,Kuala Selangor District,"Manufacturing, Transport & Logistics","Purchasing, Procurement & Inventory",purchasing-assistant,Full time,"RM 1,600 – RM 2,000 per month",,,,,,2024-03-22T09:29:08Z,kaggle_jobstreet
+15,Mazone Service,Penang Island,Human Resources & Recruitment,Consulting & Generalist HR,Human-Resources-and-Administration-Executive,Full time,"RM 3,000 – RM 4,000 per month",,,,,,2024-03-22T05:49:27Z,kaggle_jobstreet
+18,Chemopharm Sdn Bhd,Sarawak,Sales,Account & Relationship Management,Key-Account-Executive,Full time,"RM 3,500 – RM 5,000 per month",,,,,,2024-03-22T09:52:58Z,kaggle_jobstreet
+20,Yoke Food Industries Sdn. Bhd.,Kulai District,Human Resources & Recruitment,Consulting & Generalist HR,Human-Capital-Executive,Full time,,,,,,,2024-03-22T05:45:19Z,kaggle_jobstreet
+25,PWCO E-SERVICES SDN. BHD.,Kuala Lumpur,Accounting,Audit - External,audit-associate,Full time,"RM 2,700 – RM 3,600 per month",,,,,,2024-03-22T09:59:39Z,kaggle_jobstreet
+30,Classic Mode Sdn Bhd,Hulu Langat,Accounting,Bookkeeping & Small Practice Accounting,Accounts-and-Administration-Clerk,Full time,"RM 2,000 – RM 2,500 per month",,,,,,2024-03-22T05:30:35Z,kaggle_jobstreet
+35,TMK CHEMICAL BHD.,Petaling,Accounting,Audit - Internal,Internal-Audit-Executive,Full time,,,,,,,2024-03-22T07:39:51Z,kaggle_jobstreet
+40,OTC Cosmetic Industries Sdn Bhd,Kuala Selangor District,Engineering,Project Management,Controller,Full time,"RM 2,000 – RM 3,000 per month",,,,,,2024-03-22T09:34:20Z,kaggle_jobstreet
+45,Top Speed Transport Sdn Bhd,Johor Bahru District,Administration & Office Support,Administrative Assistants,operations-clerk,Full time,"RM 2,000 – RM 3,000 per month",,,,,,2024-03-22T03:37:43Z,kaggle_jobstreet
+50,Leaderart Industries (M) Sdn Bhd,Johor Bahru District,Engineering,Industrial Engineering,process-engineer,Full time,,,,,,,2024-03-22T06:36:24Z,kaggle_jobstreet
+55,VODATEL SDN. BHD.,Kuala Lumpur,Sales,Account & Relationship Management,corporate-sales-executive,Full time,"RM 3,000 – RM 4,500 per month",,,,,,2024-03-22T09:56:13Z,kaggle_jobstreet
+60,GREYWOLF NETWORKS SDN BHD,Bangsar South,Information & Communication Technology,Web Development & Production,backend-developer,Full time,"RM 4,000 – RM 6,000 per month",,,,,,2024-03-22T06:10:28Z,kaggle_jobstreet
+65,Aimflex Systems Sdn Bhd,Kulai District,Accounting,Bookkeeping & Small Practice Accounting,accounts-executive,Full time,,,,,,,2024-03-21T08:39:13Z,kaggle_jobstreet

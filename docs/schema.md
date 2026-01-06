@@ -1,30 +1,38 @@
 # Job Dataset Schema
 
 ## Purpose
-This schema defines the final structured format of cleaned job posting data,
+This schema defines the structured format of cleaned job posting data,
 designed for analysis and downstream applications.
+
+Fields are classified based on data availability and processing stage.
+
+---
 
 ## Fields
 
-| Field Name      | Type    | Description                           | Required |
-| --------------- | ------- | ------------------------------------- | -------- |
-| job_id          | string  | Unique identifier of the job posting  | Yes      |
-| job_title       | string  | Title of the job position             | Yes      |
-| company         | string  | Company offering the job              | Yes      |
-| location        | string  | Job location as text                  | Yes      |
-| is_remote       | boolean | Whether the job is remote             | No       |
-| salary_min      | number  | Minimum salary value                  | No       |
-| salary_max      | number  | Maximum salary value                  | No       |
-| salary_currency | string  | Salary currency (e.g. USD)            | No       |
-| salary_period   | string  | Salary period (year/hour/month)       | No       |
-| job_type        | string  | Employment type (full-time, contract) | No       |
-| posted_date     | date    | Job posting date                      | No       |
-| source          | string  | Data source name                      | Yes      |
+| Field Name      | Type    | Description                                   | Required | Notes |
+|---------------|---------|-----------------------------------------------|----------|-------|
+| job_id        | string  | Generated job identifier (hash)               | No       | Generated in processed stage |
+| job_title     | string  | Title of the job position                     | Yes      | Raw field |
+| company       | string  | Company offering the job                      | No       | May be missing or confidential |
+| location      | string  | Raw job location text                         | Yes      | Free-text |
+| is_remote     | boolean | Whether the job is remote                     | No       | Derived field |
+| salary_raw    | string  | Original salary text                          | No       | From raw |
+| salary_type   | string  | Salary category (missing, range, negotiable…) | No       | Derived from rules |
+| salary_min    | number  | Minimum salary value                          | No       | Parsed |
+| salary_max    | number  | Maximum salary value                          | No       | Parsed |
+| salary_currency | string | Salary currency                               | No       | Parsed |
+| salary_period | string  | Salary period (month/year/hour)               | No       | Parsed |
+| job_type      | string  | Employment type                               | No       | Raw |
+| posted_date   | string  | Job posting date                              | No       | Parsed to date later |
+| source        | string  | Data source name                              | Yes      | Required |
 
-## Design Rationale
+---
 
-- job_title: Without a title, a job posting has no meaning.
-- company: Used to identify duplicate postings and for grouping analysis.
-- location: Required for geographic analysis and remote classification.
-- salary_min / salary_max: Salaries are often given as ranges in text form.
+## Design Notes
+
+- Raw ambiguity is preserved until explicitly resolved.
+- Derived fields are clearly distinguished from raw fields.
+- No assumptions are made for missing values.
+- Schema supports incremental enrichment.
 

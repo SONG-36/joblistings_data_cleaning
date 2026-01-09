@@ -1,4 +1,4 @@
-# Salary Field Inspection (Human Review)
+# Salary Field Inspection
 
 ## Background
 

@@ -144,3 +144,10 @@ These findings directly inform the design of the interim schema and salary norma
 - Patterns documented for reproducibility  
 - Ready to proceed to structural decomposition (Raw → Interim)
 
+## Key Findings
+
+- 54.23% of job postings do not disclose salary information.
+- Salary omission is strongly correlated with industry type rather than data quality issues.
+- Professional, regulated, and senior-level categories (e.g., Government, Banking, Consulting) show the highest salary omission rates (>70%).
+- Operational and service-oriented roles demonstrate higher salary transparency.
+- When salary is provided, the salary period is usually stated explicitly, indicating that omission is a deliberate choice rather than incomplete formatting.

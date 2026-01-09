@@ -1,59 +1,76 @@
+"""
+Build interim dataset from raw job postings.
+
+B30 scope:
+- Read raw job data
+- Preserve original salary text (salary_raw)
+- Extract ONLY explicitly stated salary period and currency
+- Attach source and confidence for full traceability
+- Write structured interim dataset
+
+IMPORTANT:
+- No inference
+- No normalization
+- No salary conversion
+"""
+
 import pandas as pd
-import os
 
-RAW_FILE = "data/raw/jobs_raw.csv"
-OUT_FILE = "data/interim/jobs_interim.csv"
-
-# ============================================================
-# Stage: Raw -> Interim
-# Purpose:
-# - Structural normalization only
-# - Field decomposition WITHOUT interpretation
-# - No salary parsing, no business logic
-# ============================================================
-
-# 1. Read raw CSV (read once, raw is immutable)
-df_raw = pd.read_csv(RAW_FILE)
-
-# 2. Normalize column names
-df_raw.columns = (
-    df_raw.columns
-        .str.strip()
-        .str.lower()
-        .str.replace(" ", "_")
+from src.salary.parse_salary_period import (
+    extract_salary_period,
+    extract_currency,
 )
 
-# 3. Build interim dataframe with explicit schema
-df = pd.DataFrame()
 
-# --- Identity fields ---
-df["job_id"] = df_raw.index.astype(str)
-df["company"] = df_raw.get("company")
-df["location"] = df_raw.get("location")
-df["category"] = df_raw.get("category")
-df["subcategory"] = df_raw.get("subcategory")
-df["role"] = df_raw.get("role")
-df["employment_type"] = df_raw.get("type")
+RAW_PATH = "data/raw/jobs_raw.csv"
+INTERIM_PATH = "data/interim/jobs_interim.csv"
 
-# --- Salary decomposition (STRUCTURE ONLY) ---
-df["salary_raw"] = df_raw.get("salary")
 
-df["salary_type"] = None
-df["salary_min"] = None
-df["salary_max"] = None
-df["salary_period"] = None
-df["currency"] = None
+def build_interim() -> None:
+    """
+    Build interim job dataset with structured salary metadata.
 
-# --- Metadata ---
-df["listing_date"] = df_raw.get("listingdate")
-df["source"] = "kaggle_jobstreet"
+    The interim dataset is designed to be:
+    - Auditable: every derived field can be traced back to salary_raw
+    - Reversible: no irreversible transformation is applied
+    - Extendable: future inference stages can be layered on top
+    """
+    # Load raw job data (immutable input)
+    df = pd.read_csv(RAW_PATH)
 
-# 4. Trim whitespace in string fields
-for col in df.select_dtypes(include="object").columns:
-    df[col] = df[col].str.strip()
+    # Preserve original salary text for traceability
+    # This column MUST remain unchanged in all downstream stages
+    df["salary_raw"] = df["salary"]
 
-# 5. Write interim file
-os.makedirs(os.path.dirname(OUT_FILE), exist_ok=True)
-df.to_csv(OUT_FILE, index=False)
+    # Extract salary period and currency from raw text
+    period_results = df["salary_raw"].apply(extract_salary_period)
+    currency_results = df["salary_raw"].apply(extract_currency)
 
-print(f"[DONE] Interim file written to {OUT_FILE}")
+    # Expand salary period fields
+    df["salary_period"] = period_results.apply(
+        lambda x: x["salary_period"]
+    )
+    df["salary_period_source"] = period_results.apply(
+        lambda x: x["salary_period_source"]
+    )
+    df["salary_period_confidence"] = period_results.apply(
+        lambda x: x["salary_period_confidence"]
+    )
+
+    # Expand currency fields
+    df["currency"] = currency_results.apply(
+        lambda x: x["currency"]
+    )
+    df["currency_source"] = currency_results.apply(
+        lambda x: x["currency_source"]
+    )
+
+    # Write interim dataset
+    df.to_csv(INTERIM_PATH, index=False)
+
+    print(f"[OK] Interim dataset written to: {INTERIM_PATH}")
+    print(f"[INFO] Total records processed: {len(df)}")
+
+
+if __name__ == "__main__":
+    build_interim()
